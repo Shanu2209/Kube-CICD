@@ -191,6 +191,8 @@
                 </configuration>
             </plugin>
 
+            
+
             <!-- Jacoco Maven Plugin for Code Coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -214,5 +216,20 @@
                 </executions>
             </plugin>
         </plugins>
+             <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.2</version> <!-- Use the version you have configured -->
+        <configuration>
+            <argLine>
+                -javaagent:/var/jenkins_home/.m2/repository/org/jacoco/org.jacoco.agent/0.7.2.201409121644/org.jacoco.agent-0.7.2.201409121644-runtime.jar=destfile=/var/jenkins_home/workspace/Pipe/target/jacoco.exec
+                <!-- Exclude problematic classes -->
+                -xx:-java/util/UUID
+            </argLine>
+        </configuration>
+    </plugin>
+</plugins>
     </build>
 </project>
+
