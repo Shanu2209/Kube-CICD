@@ -16,12 +16,15 @@
         <mysql-connector.version>5.1.36</mysql-connector.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <jstl.version>1.2</jstl.version>
-        <junit.version>4.10</junit.version>
+        <junit.version>4.13.2</junit.version>
         <logback.version>1.1.3</logback.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    <dependency>
+
+    <dependencies>
+        <!-- Spring dependencies -->
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
@@ -86,26 +89,6 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>1.9.5</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>3.2.3.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Servlet API -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Logging -->
@@ -191,8 +174,6 @@
                 </configuration>
             </plugin>
 
-            
-
             <!-- Jacoco Maven Plugin for Code Coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -216,20 +197,5 @@
                 </executions>
             </plugin>
         </plugins>
-             <plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.2.2</version> <!-- Use the version you have configured -->
-        <configuration>
-            <argLine>
-                -javaagent:/var/jenkins_home/.m2/repository/org/jacoco/org.jacoco.agent/0.7.2.201409121644/org.jacoco.agent-0.7.2.201409121644-runtime.jar=destfile=/var/jenkins_home/workspace/Pipe/target/jacoco.exec
-                <!-- Exclude problematic classes -->
-                -xx:-java/util/UUID
-            </argLine>
-        </configuration>
-    </plugin>
-</plugins>
     </build>
 </project>
-
